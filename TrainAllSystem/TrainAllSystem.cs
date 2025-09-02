@@ -1,6 +1,8 @@
 ﻿using AirportCEOModLoader.Core;
 using HarmonyLib;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -73,13 +75,8 @@ public static class TrainAllSystem
         }
 
         float estimatedCost = 0;
-        foreach (EmployeeController employee in AirportController.Instance.allEmployees)
+        foreach (EmployeeController employee in GetTrainableEmployees())
         {
-            if (!employee.CanTrain)
-            {
-                continue;
-            }
-
             estimatedCost += employee.TrainingPrice;
         }
 
@@ -99,15 +96,15 @@ public static class TrainAllSystem
             return;
         }
 
-        foreach (EmployeeController employee in AirportController.Instance.allEmployees)
+        foreach (EmployeeController employee in GetTrainableEmployees())
         {
-            if (!employee.CanTrain)
-            {
-                continue;
-            }
-
             employee.TrainEmployee();
         }
         panelUI.GenerateEmployeeContainers();
+    }
+
+    private static IEnumerable<EmployeeController> GetTrainableEmployees()
+    {
+        return AirportController.Instance.allEmployees.Where(emp => emp.CanTrain && emp.employeeModel.isHired && !emp.employeeModel.isFired);
     }
 }
