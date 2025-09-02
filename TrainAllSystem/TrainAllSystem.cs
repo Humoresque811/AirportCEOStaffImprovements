@@ -15,7 +15,7 @@ public static class TrainAllSystem
     static Transform staffinteractionbar;
     static Transform originalHappinessTransform;
     static Transform newHappinessTransform;
-    static Button newHappinessButton;
+    static Button trainAllButton;
     static TextMeshProUGUI newHappinessText;
 
     private static EmployeePanelUI panelUI;
@@ -38,7 +38,7 @@ public static class TrainAllSystem
 
             newHappinessText.text = "Train All Staff";
 
-            newHappinessButton = newHappinessTransform.gameObject.AddComponent<Button>();
+            trainAllButton = newHappinessTransform.gameObject.AddComponent<Button>();
             ColorBlock colorBlock = new()
             {
                 normalColor = DataPlaceholderColors.Instance.lightBlue,
@@ -49,14 +49,14 @@ public static class TrainAllSystem
                 selectedColor = DataPlaceholderColors.Instance.lightBlue,
                 fadeDuration = 0.1f,
             };
-            newHappinessButton.colors = colorBlock;
-            newHappinessButton.onClick.AddListener(OnTrainAllClick);
+            trainAllButton.colors = colorBlock;
+            trainAllButton.onClick.AddListener(OnTrainAllClick);
 
             Image image = newHappinessTransform.GetComponent<Image>();
             image.enabled = true;
             image.color = Color.white;
 
-            newHappinessButton.enabled = true;
+            trainAllButton.enabled = true;
 
             AirportCEOStaffImprovements.SILogger.LogInfo("Completed button creation?");
         }
@@ -72,11 +72,11 @@ public static class TrainAllSystem
     {
         if(panelType == Enums.ManagementSpecificPanelType.StaffOverview)
         {
-            newHappinessButton.gameObject.SetActive(true);
+            trainAllButton.gameObject.SetActive(true);
             return;
         }
 
-        newHappinessButton.gameObject.SetActive(false);
+        trainAllButton.gameObject.SetActive(false);
         return;
     }
 
