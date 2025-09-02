@@ -34,4 +34,9 @@
       <HintPath>lib\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Copy SourceFiles="$(TargetDir)\$(TargetName).dll" DestinationFolder="C:\Program Files (x86)\Steam\steamapps\common\Airport CEO\BepInEx\plugins" />
+		<Copy SourceFiles="$(TargetDir)\$(TargetName).pdb" DestinationFolder="C:\Program Files (x86)\Steam\steamapps\common\Airport CEO\BepInEx\plugins" />
+	</Target>
 </Project>
