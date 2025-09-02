@@ -66,6 +66,20 @@ public static class TrainAllSystem
         }
     }
 
+    [HarmonyPatch(typeof(EmployeePanelUI), nameof(EmployeePanelUI.LoadPanel))]
+    [HarmonyPostfix]
+    public static void LoadPanelPatch(Enums.ManagementSpecificPanelType panelType)
+    {
+        if(panelType == Enums.ManagementSpecificPanelType.StaffOverview)
+        {
+            newHappinessButton.gameObject.SetActive(true);
+            return;
+        }
+
+        newHappinessButton.gameObject.SetActive(false);
+        return;
+    }
+
     public static void OnTrainAllClick()
     {
         if (!AirportController.Instance.HasHiredEmployeeType(Enums.EmployeeType.HRDirector))
