@@ -1,10 +1,6 @@
 ﻿using AirportCEOModLoader.Core;
 using HarmonyLib;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +18,7 @@ public static class TrainAllSystem
 
     private static EmployeePanelUI panelUI;
 
-    [HarmonyPatch(typeof(EmployeePanelUI), "InitializePanel")]
+    [HarmonyPatch(typeof(EmployeePanelUI), nameof(EmployeePanelUI.InitializePanel))]
     [HarmonyPostfix]
     public static void CreateButton(EmployeePanelUI __instance)
     {
