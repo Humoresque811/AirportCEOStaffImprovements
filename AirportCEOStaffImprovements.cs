@@ -1,4 +1,5 @@
-﻿using BepInEx;
+﻿using AirportCEOModLoader.WatermarkUtils;
+using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -29,5 +30,10 @@ public class AirportCEOStaffImprovements : BaseUnityPlugin
         SIConfig.SetUpConfig();
         Logger.LogInfo($"{PluginInfo.PLUGIN_GUID} finished setting up config.");
 
+    }
+
+    private void Start()
+    {
+        WatermarkUtils.Register(new WatermarkInfo("StI", PluginInfo.PLUGIN_VERSION, true));
     }
 }
