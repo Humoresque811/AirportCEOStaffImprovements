@@ -31,9 +31,4 @@ public class AirportCEOStaffImprovements : BaseUnityPlugin
         Logger.LogInfo($"{PluginInfo.PLUGIN_GUID} finished setting up config.");
 
     }
-
-    private void Start()
-    {
-        WatermarkUtils.Register(new WatermarkInfo("StI", PluginInfo.PLUGIN_VERSION, true));
-    }
 }
