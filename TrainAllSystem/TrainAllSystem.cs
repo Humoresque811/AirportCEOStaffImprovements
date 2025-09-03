@@ -3,8 +3,6 @@ using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,12 +15,12 @@ public static class TrainAllSystem
     static Transform staffinteractionbar;
     static Transform originalHappinessTransform;
     static Transform newHappinessTransform;
-    static Button newHappinessButton;
+    static Button trainAllButton;
     static TextMeshProUGUI newHappinessText;
 
     private static EmployeePanelUI panelUI;
 
-    [HarmonyPatch(typeof(EmployeePanelUI), "InitializePanel")]
+    [HarmonyPatch(typeof(EmployeePanelUI), nameof(EmployeePanelUI.InitializePanel))]
     [HarmonyPostfix]
     public static void CreateButton(EmployeePanelUI __instance)
     {
@@ -40,7 +38,7 @@ public static class TrainAllSystem
 
             newHappinessText.text = "Train All Staff";
 
-            newHappinessButton = newHappinessTransform.gameObject.AddComponent<Button>();
+            trainAllButton = newHappinessTransform.gameObject.AddComponent<Button>();
             ColorBlock colorBlock = new()
             {
                 normalColor = DataPlaceholderColors.Instance.lightBlue,
@@ -51,14 +49,14 @@ public static class TrainAllSystem
                 selectedColor = DataPlaceholderColors.Instance.lightBlue,
                 fadeDuration = 0.1f,
             };
-            newHappinessButton.colors = colorBlock;
-            newHappinessButton.onClick.AddListener(OnTrainAllClick);
+            trainAllButton.colors = colorBlock;
+            trainAllButton.onClick.AddListener(OnTrainAllClick);
 
             Image image = newHappinessTransform.GetComponent<Image>();
             image.enabled = true;
             image.color = Color.white;
 
-            newHappinessButton.enabled = true;
+            trainAllButton.enabled = true;
 
             AirportCEOStaffImprovements.SILogger.LogInfo("Completed button creation?");
         }
@@ -66,6 +64,20 @@ public static class TrainAllSystem
         {
             AirportCEOStaffImprovements.SILogger.LogError($"Failed to create new icon. {ExceptionUtils.ProccessException(ex)}");
         }
+    }
+
+    [HarmonyPatch(typeof(EmployeePanelUI), nameof(EmployeePanelUI.LoadPanel))]
+    [HarmonyPostfix]
+    public static void LoadPanelPatch(Enums.ManagementSpecificPanelType panelType)
+    {
+        if(panelType == Enums.ManagementSpecificPanelType.StaffOverview)
+        {
+            trainAllButton.gameObject.SetActive(true);
+            return;
+        }
+
+        trainAllButton.gameObject.SetActive(false);
+        return;
     }
 
     public static void OnTrainAllClick()
@@ -77,13 +89,8 @@ public static class TrainAllSystem
         }
 
         float estimatedCost = 0;
-        foreach (EmployeeController employee in AirportController.Instance.allEmployees)
+        foreach (EmployeeController employee in GetTrainableEmployees())
         {
-            if (!employee.CanTrain)
-            {
-                continue;
-            }
-
             estimatedCost += employee.TrainingPrice;
         }
 
@@ -103,15 +110,15 @@ public static class TrainAllSystem
             return;
         }
 
-        foreach (EmployeeController employee in AirportController.Instance.allEmployees)
+        foreach (EmployeeController employee in GetTrainableEmployees())
         {
-            if (!employee.CanTrain)
-            {
-                continue;
-            }
-
             employee.TrainEmployee();
         }
         panelUI.GenerateEmployeeContainers();
+    }
+
+    private static IEnumerable<EmployeeController> GetTrainableEmployees()
+    {
+        return AirportController.Instance.allEmployees.Where(emp => emp.CanTrain && emp.employeeModel.isHired && !emp.employeeModel.isFired);
     }
 }
