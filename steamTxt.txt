@@ -1,0 +1,11 @@
+[h1]Note:[/h1]
+This mod requires the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3109136766]AirportCEO Mod Loader[/url] to function. Please make sure to have it correctly downloaded and installed
+
+[h1]Description:[/h1]
+AirportCEO Staff Improvements is a code based mod that currently only adds a way to train all staff. However, in the future it could host more options. Config is accessed via the F1 key.
+
+[h1]Details:[/h1]
+Features:
+- New button to train all (hired) staff that can be trained, and simple system around it
+Forum Link N/A for Changelog, Discussion, and more Details
+Version 1.0.1
