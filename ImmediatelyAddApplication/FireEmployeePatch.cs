@@ -6,10 +6,8 @@ namespace AirportCEOStaffImprovements.ImmediatelyAddApplication;
 internal class FireEmployeePatch
 {
     [HarmonyPostfix]
-    static void PostfixPatch()
+    static void PostfixPatch(CandidateController __instance)
     {
-        var instance = Singleton<CandidateController>.instance;
-
-        instance.StartCoroutine(instance.ValidateApplications());
+        __instance.StartCoroutine(__instance.ValidateApplications());
     }
 }
