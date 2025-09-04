@@ -1,4 +1,4 @@
-﻿using AirportCEOModLoader.WatermarkUtils;
+﻿using AirportCEOStaffImprovements.SortingEmployees.SortBy;
 using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
@@ -13,13 +13,15 @@ public class AirportCEOStaffImprovements : BaseUnityPlugin
     public static AirportCEOStaffImprovements Instance { get; private set; }
     internal static Harmony Harmony { get; private set; }
     internal static ManualLogSource SILogger { get; private set; }
-    internal static ConfigFile ConfigReference {  get; private set; }
+    internal static ConfigFile ConfigReference { get; private set; }
 
     private void Awake()
     {
+        SortService.Initialize();
+
         Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
         Harmony = new Harmony(PluginInfo.PLUGIN_GUID);
-        Harmony.PatchAll(); 
+        Harmony.PatchAll();
 
         Instance = this;
         SILogger = Logger;
