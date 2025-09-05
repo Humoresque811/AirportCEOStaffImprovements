@@ -8,6 +8,10 @@ internal class RefreshPanelOnSettingChangedPatch
     [HarmonyPostfix]
     static void PostfixPatch(EmployeePanelUI __instance)
     {
+        SIConfig.SortByEmployeeType.SettingChanged += (s, e) =>
+        {
+            __instance.GenerateEmployeeContainers();
+        };
         SIConfig.SortOptions.SettingChanged += (s, e) =>
         {
             __instance.GenerateEmployeeContainers();

@@ -54,15 +54,17 @@ internal class GenerateEmployeeContainersPatch
 
     private static int SortEmployees(EmployeeController a, EmployeeController b, SortByEnum sortBy)
     {
-        // First, compare by EmployeeType
-        var employeeTypeX = a.EmployeeType.ToString();
-        var employeeTypeY = b.EmployeeType.ToString();
-
-        var employeeTypeComparison = string.Compare(employeeTypeX, employeeTypeY);
-
-        if (employeeTypeComparison != 0)
+        if (SIConfig.SortByEmployeeType.Value)
         {
-            return employeeTypeComparison;
+            var employeeTypeX = a.EmployeeType.ToString();
+            var employeeTypeY = b.EmployeeType.ToString();
+
+            var employeeTypeComparison = string.Compare(employeeTypeX, employeeTypeY);
+
+            if (employeeTypeComparison != 0)
+            {
+                return employeeTypeComparison;
+            }
         }
 
         ISortBy sorter = SortService.GetSortingStrategy(sortBy);
