@@ -60,5 +60,5 @@ interface ISortBy
     SortByEnum Type { get; }
 
 
-    int Compare(EmployeeContainerUI x, EmployeeContainerUI y);
+    int Compare(EmployeeController x, EmployeeController y);
 }

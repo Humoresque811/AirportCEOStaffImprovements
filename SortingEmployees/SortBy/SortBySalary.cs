@@ -7,10 +7,10 @@ internal class SortBySalary: ISortBy
 {
     public SortByEnum Type => SortByEnum.Salary;
 
-    public int Compare(EmployeeContainerUI x, EmployeeContainerUI y)
+    public int Compare(EmployeeController x, EmployeeController y)
     {
-        var skillX = x.currentEmployee.employeeModel.salary;
-        var skillY = y.currentEmployee.employeeModel.salary;
+        var skillX = x.employeeModel.salary;
+        var skillY = y.employeeModel.salary;
 
         return CompareFunctions.CompareFloat(skillX, skillY);
     }
