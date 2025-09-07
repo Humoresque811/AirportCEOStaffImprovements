@@ -30,10 +30,10 @@ internal class SIConfig
         MaxStaffGenerated = AirportCEOStaffImprovements.ConfigReference.Bind("General Applicants", "Max Staff Generated", 8, 
             new ConfigDescription("The max number of staff generated for hiring at a given time, per type", new AcceptableValueRange<int>(8, 16)));
 
-        SyncStaffFilters = AirportCEOStaffImprovements.ConfigReference.Bind("General Filters", "Sync Staff Filters", true, "Sync the staff filters between the hiring and applicants screens.");  
+        SyncStaffFilters = AirportCEOStaffImprovements.ConfigReference.Bind("General Filters", "Sync Staff Filters", true, "Sync the staff filters between the staff and applicants screens");  
 
-        SortByEmployeeType = AirportCEOStaffImprovements.ConfigReference.Bind("General Sorting", "Sort By Employee Type", true, "Sort employees and applicants by their employee type");
-        SortOptions = AirportCEOStaffImprovements.ConfigReference.Bind("General Sorting", "Sort Options",  SortByEnum.Skill, "Sort employees and applicants by skill when hiring.");
-        SortDirection = AirportCEOStaffImprovements.ConfigReference.Bind("General Sorting", "Sort Direction", SortDirectionEnum.Descending, "Ascending means low to hight, Descending means high to low.");
+        SortByEmployeeType = AirportCEOStaffImprovements.ConfigReference.Bind("General Sorting", "Sort By Employee Type", true, "Sort staff and applicants by their employee type");
+        SortOptions = AirportCEOStaffImprovements.ConfigReference.Bind("General Sorting", "Sort Options",  SortByEnum.Skill, "Sort staff and applicants by skill when hiring");
+        SortDirection = AirportCEOStaffImprovements.ConfigReference.Bind("General Sorting", "Sort Direction", SortDirectionEnum.Descending, "Ascending means low to hight, Descending means high to low");
     }   
 }

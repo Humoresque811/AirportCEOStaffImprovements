@@ -8,8 +8,8 @@ AirportCEO Staff Improvements is a code based mod that adds a way to train all h
 Features:
 - New button to train all (hired) staff that can be trained, and simple system around it
 - Instant new applicants, also configurable how many 8 - 16
-- Sync filter between hired and applicant view
-- Improve sorting for hired and applicant view based on Name / Skill / Salary
+- Sync filter between staff and applicant views
+- Improve sorting for staff and applicant views based on Default (name) / Skill / Salary strategies
 
 Forum Link N/A for Changelog, Discussion, and more Details
 Version 1.1.0
