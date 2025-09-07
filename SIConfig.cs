@@ -25,15 +25,15 @@ internal class SIConfig
     internal static void SetUpConfig()
     {
         UseTrainAllButton = AirportCEOStaffImprovements.ConfigReference.Bind("General", "Create Train All Button", true, "Create a button to train all staff with.");
-        StaffRespawnSpeed = AirportCEOStaffImprovements.ConfigReference.Bind("General", "Staff Respawn Speed", 1f, 
+        StaffRespawnSpeed = AirportCEOStaffImprovements.ConfigReference.Bind("General Applicants", "Staff Respawn Speed", 1f, 
             new ConfigDescription("Around how fast should staff respawn?", new AcceptableValueRange<float>(0.5f, 5f)));
-        MaxStaffGenerated = AirportCEOStaffImprovements.ConfigReference.Bind("General", "Max Staff Generated", 8, 
+        MaxStaffGenerated = AirportCEOStaffImprovements.ConfigReference.Bind("General Applicants", "Max Staff Generated", 8, 
             new ConfigDescription("The max number of staff generated for hiring at a given time, per type", new AcceptableValueRange<int>(8, 16)));
 
         SyncStaffFilters = AirportCEOStaffImprovements.ConfigReference.Bind("General Filters", "Sync Staff Filters", true, "Sync the staff filters between the hiring and applicants screens.");  
 
-        SortByEmployeeType = AirportCEOStaffImprovements.ConfigReference.Bind("General.Sorting", "Sort By Employee Type", true, "Sort employees and applicants by their employee type");
-        SortOptions = AirportCEOStaffImprovements.ConfigReference.Bind("General.Sorting", "Sort Options",  SortByEnum.Skill, "Sort employees and applicants by skill when hiring.");
-        SortDirection = AirportCEOStaffImprovements.ConfigReference.Bind("General.Sorting", "Sort Direction", SortDirectionEnum.Descending, "Ascending means low to hight, Descending means high to low.");
+        SortByEmployeeType = AirportCEOStaffImprovements.ConfigReference.Bind("General Sorting", "Sort By Employee Type", true, "Sort employees and applicants by their employee type");
+        SortOptions = AirportCEOStaffImprovements.ConfigReference.Bind("General Sorting", "Sort Options",  SortByEnum.Skill, "Sort employees and applicants by skill when hiring.");
+        SortDirection = AirportCEOStaffImprovements.ConfigReference.Bind("General Sorting", "Sort Direction", SortDirectionEnum.Descending, "Ascending means low to hight, Descending means high to low.");
     }   
 }
