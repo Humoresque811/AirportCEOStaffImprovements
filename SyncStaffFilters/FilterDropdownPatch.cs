@@ -9,6 +9,11 @@ internal class FilterDropdownPatch
     [HarmonyPostfix]
     static void SetFilterCategoryPatch(EmployeePanelUI __instance)
     {
+        if (!SIConfig.SyncStaffFilters.Value)
+        {
+            return;
+        }
+
         var currentValue = __instance.FilterCategory;
 
         __instance.employeeSearchCategory = currentValue;
@@ -19,6 +24,11 @@ internal class FilterDropdownPatch
     [HarmonyPostfix]
     static void SetFilterValuePatch(EmployeePanelUI __instance)
     {
+        if (!SIConfig.SyncStaffFilters.Value)
+        {
+            return;
+        }
+
         var currentValue = __instance.FilterValue;
 
         __instance.employeeFilterValue = currentValue;
