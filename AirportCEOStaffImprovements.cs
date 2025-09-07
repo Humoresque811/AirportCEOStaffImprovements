@@ -6,7 +6,7 @@ using HarmonyLib;
 
 namespace AirportCEOStaffImprovements;
 
-[BepInPlugin("org.airportceostaffimprovements.humoresque", "AirportCEO Staff Improvements", PluginInfo.PLUGIN_VERSION)]
+[BepInPlugin("org.airportceostaffimprovements.humoresque", "Staff Improvements", PluginInfo.PLUGIN_VERSION)]
 [BepInDependency("org.airportceomodloader.humoresque")]
 public class AirportCEOStaffImprovements : BaseUnityPlugin
 {
