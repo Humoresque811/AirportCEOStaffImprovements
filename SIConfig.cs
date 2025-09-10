@@ -21,6 +21,8 @@ internal class SIConfig
     internal static ConfigEntry<SortByEnum> SortOptions { get; private set; }
     internal static ConfigEntry<SortDirectionEnum> SortDirection { get; private set; }
 
+    internal static ConfigEntry<bool> AllowStaffToBeFullyTrained { get; private set; }
+
 
     internal static void SetUpConfig()
     {
@@ -35,5 +37,7 @@ internal class SIConfig
         SortByEmployeeType = AirportCEOStaffImprovements.ConfigReference.Bind("General Sorting", "Sort By Employee Type", true, "Sort staff and applicants by their employee type");
         SortOptions = AirportCEOStaffImprovements.ConfigReference.Bind("General Sorting", "Sort Options",  SortByEnum.Skill, "Sort staff and applicants by skill when hiring");
         SortDirection = AirportCEOStaffImprovements.ConfigReference.Bind("General Sorting", "Sort Direction", SortDirectionEnum.Descending, "Ascending means low to hight, Descending means high to low");
+
+        AllowStaffToBeFullyTrained = AirportCEOStaffImprovements.ConfigReference.Bind("General Training", "Allow Staff To Be Fully Trained", true, "Allow staff to be fully trained instead of only 3 times");
     }   
 }
