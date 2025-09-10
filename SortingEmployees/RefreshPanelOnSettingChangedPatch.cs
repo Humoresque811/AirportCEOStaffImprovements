@@ -10,15 +10,25 @@ internal class RefreshPanelOnSettingChangedPatch
     {
         SIConfig.SortByEmployeeType.SettingChanged += (s, e) =>
         {
-            __instance.GenerateEmployeeContainers();
+            RefreshPanelOnSettingChanged(__instance);
         };
         SIConfig.SortOptions.SettingChanged += (s, e) =>
         {
-            __instance.GenerateEmployeeContainers();
+            RefreshPanelOnSettingChanged(__instance);
         };
         SIConfig.SortDirection.SettingChanged += (s, e) =>
         {
-            __instance.GenerateEmployeeContainers();
+            RefreshPanelOnSettingChanged(__instance);
         };
     }   
+
+    private static void RefreshPanelOnSettingChanged(EmployeePanelUI instance)
+    {
+        if(!instance)
+        {
+            return;
+        }
+
+        instance.GenerateEmployeeContainers();
+    }
 }
