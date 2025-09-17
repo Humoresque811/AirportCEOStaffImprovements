@@ -13,7 +13,7 @@ How to start using the plugin:
 
 ### Steam
 
-WIP not yet implemented
+Subscribe on the [steam mod page](https://steamcommunity.com/sharedfiles/filedetails/?id=3244582496).
 
 ## Dev
 
