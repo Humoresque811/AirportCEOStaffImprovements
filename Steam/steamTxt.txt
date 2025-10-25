@@ -12,4 +12,4 @@ Features:
 - Improve sorting for staff and applicant views based on Default (name) / Skill / Salary strategies
 
 Forum Link N/A for Changelog, Discussion, and more Details
-Version 1.1.0
+Version 1.1.2

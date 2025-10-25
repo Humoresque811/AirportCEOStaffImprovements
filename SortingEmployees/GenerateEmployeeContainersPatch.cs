@@ -83,7 +83,7 @@ internal class GenerateEmployeeContainersPatch
             bool employeeIsNotFranchiseStaff = employeeController.EmployeeModel.employeeType != Enums.EmployeeType.FranchiseStaff;
             bool isNotFired = !employeeController.EmployeeModel.isFired;
             bool isNotIgnoreActivityExecution = !employeeController.EmployeeModel.ignoreActivityExecution;
-            bool isBetweenSkillFilter = employeeController.EmployeeModel.skill > Instance.minSkillFilter * 2f && employeeController.EmployeeModel.skill < Instance.maxSkillFilter * 2f;
+            bool isBetweenSkillFilter = employeeController.EmployeeModel.skill >= Instance.minSkillFilter * 2f && employeeController.EmployeeModel.skill <= Instance.maxSkillFilter * 2f;
             bool isInCorrectOverview = (employeeController.EmployeeModel.isHired || ManagementPanelController.specificPanelTypeDisplayed != Enums.ManagementSpecificPanelType.StaffOverview) && (!employeeController.EmployeeModel.isHired || ManagementPanelController.specificPanelTypeDisplayed != Enums.ManagementSpecificPanelType.Applicants);
 
             bool filterCategoryIsAll = Instance.FilterCategory == Enums.EmployeeType.All;
