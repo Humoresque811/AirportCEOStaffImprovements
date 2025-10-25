@@ -38,5 +38,11 @@
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<Copy SourceFiles="$(TargetDir)\$(TargetName).dll" DestinationFolder="C:\Program Files (x86)\Steam\steamapps\common\Airport CEO\BepInEx\plugins" />
 		<Copy SourceFiles="$(TargetDir)\$(TargetName).pdb" DestinationFolder="C:\Program Files (x86)\Steam\steamapps\common\Airport CEO\BepInEx\plugins" />
+
+    <!-- Only copy to the user-specific path if the configuration is Release -->
+		<Copy SourceFiles="$(TargetDir)\$(TargetName).dll" DestinationFolder="$(USERPROFILE)\AppData\Roaming\Apoapsis Studios\Airport CEO\Mods\AirportCEOStaffImprovements\plugins"
+			  Condition="'$(Configuration)' == 'Release'" />
+		<Copy SourceFiles="$(TargetDir)\$(TargetName).pdb" DestinationFolder="$(USERPROFILE)\AppData\Roaming\Apoapsis Studios\Airport CEO\Mods\AirportCEOStaffImprovements\plugins"
+			  Condition="'$(Configuration)' == 'Release'" />
 	</Target>
 </Project>
