@@ -18,12 +18,6 @@ internal class SIConfig
 
     internal static ConfigEntry<bool> AllowStaffToBeFullyTrained { get; private set; }
 
-    internal static ConfigEntry<bool> ShowHireConfirmation { get; private set; }
-    internal static ConfigEntry<bool> ShowFireConfirmation { get; private set; }
-    internal static ConfigEntry<bool> ShowTrainConfirmation { get; private set; }
-    internal static ConfigEntry<bool> ShowRejectConfirmation { get; private set; }
-
-
     internal static void SetUpConfig()
     {
         UseTrainAllButton = AirportCEOStaffImprovements.ConfigReference.Bind("General", "Create Train All Button", true, "Create a button to train all staff with.");
@@ -40,11 +34,5 @@ internal class SIConfig
         SortByEmployeeType = AirportCEOStaffImprovements.ConfigReference.Bind("General Sorting", "Sort By Employee Type", true, "Sort staff and applicants by their employee type");
         SortOptions = AirportCEOStaffImprovements.ConfigReference.Bind("General Sorting", "Sort Options", SortByEnum.Skill, "Sort staff and applicants by skill when hiring");
         SortDirection = AirportCEOStaffImprovements.ConfigReference.Bind("General Sorting", "Sort Direction", SortDirectionEnum.Descending, "Ascending means low to hight, Descending means high to low");
-
-
-        ShowHireConfirmation = AirportCEOStaffImprovements.ConfigReference.Bind("General Confirmations", "Show Hire Confirmation", false, "Show a confirmation dialog when hiring an employee");
-        ShowFireConfirmation = AirportCEOStaffImprovements.ConfigReference.Bind("General Confirmations", "Show Fire Confirmation", true, "Show a confirmation dialog when firing an employee");
-        ShowTrainConfirmation = AirportCEOStaffImprovements.ConfigReference.Bind("General Confirmations", "Show Train Confirmation", false, "Show a confirmation dialog when training an employee");
-        ShowRejectConfirmation = AirportCEOStaffImprovements.ConfigReference.Bind("General Confirmations", "Show Reject Confirmation", true, "Show a confirmation dialog when rejecting an employee");
     }
 }
