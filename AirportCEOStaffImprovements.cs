@@ -1,5 +1,4 @@
-﻿using AirportCEOStaffImprovements.SortingEmployees.SortBy;
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -17,8 +16,6 @@ public class AirportCEOStaffImprovements : BaseUnityPlugin
 
     private void Awake()
     {
-        SortService.Initialize();
-
         Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
         Harmony = new Harmony(PluginInfo.PLUGIN_GUID);
         Harmony.PatchAll();
