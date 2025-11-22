@@ -10,4 +10,12 @@ Features:
 - Instant new applicants, also configurable how many 8 - 16
 
 Forum Link N/A for Changelog, Discussion, and more Details
-Version 1.1.2
+Version 1.1.3
+
+[h3]Tip:[/h3]
+Improvements to the following features are moved to [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3576969597]UI Ceo[/url]
+- Confirmations to staff actions
+- Syncing dropdown between staff and applicants
+- Sorting of staff or applicants
+
+
