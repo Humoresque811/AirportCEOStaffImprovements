@@ -8,25 +8,18 @@ internal class FullyTrainedPatch
 
     [HarmonyPatch(typeof(EmployeeController))]
     [HarmonyPatch(nameof(EmployeeController.CanTrain), MethodType.Getter)]
-    [HarmonyPostfix]
-    internal static void IsFullyTrained_Postfix(ref bool __result, EmployeeController __instance)
+    [HarmonyPrefix]
+    internal static bool CanTrain_Prefix(ref bool __result, EmployeeController __instance)
     {
         if (!SIConfig.AllowStaffToBeFullyTrained.Value)
         {
-            return;
+            // If setting is disabled 
+            return true;
         }
 
-        __result = __instance.EmployeeModel.skill < 2f;
+        // Needs to be less than 1.99 to make sure it shows up in the container
+        // See function EmployeePanelUI.GenerateEmployeeContainers
+        __result = __instance.EmployeeModel.skill < 1.99f;
+        return false;
     }
-
-    [HarmonyPatch(typeof(EmployeeController))]
-    [HarmonyPatch(nameof(EmployeeController.SkillAfterTrain), MethodType.Getter)]
-    internal static void Postfix(ref float __result)
-    {
-        if (__result > 1.99f)
-        {
-            __result = 2f;
-        }
-    }
-
 }
